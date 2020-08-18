@@ -1,3 +1,3 @@
 # LeetCode
 
-My solutions for LeetCode's Monthly Challenge problems.
+My solutions for LeetCode challenges.

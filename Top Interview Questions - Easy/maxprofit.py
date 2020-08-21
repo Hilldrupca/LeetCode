@@ -12,6 +12,13 @@ class Solution:
         Returns:
             itn - maximum profit if stocks are bought at lows,
                   and sold at highs
+                  
+        Examples:
+            maxProfit([7,1,5,3,6,2]) returns 7
+            
+            maxProfit([1,2,3,4,5]) returns 4
+            
+            maxProfit([7,6,4,3,1]) returns 0
         '''
         if len(prices) == 1:
             return 0

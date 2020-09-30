@@ -1,6 +1,9 @@
 from typing import List
 
 class Solution:
+    '''
+    LeetCode Monthly Challenge problem for September 30th, 2020.
+    '''
     def firstMissingPositive(self, nums: List[int]) -> int:
         '''
         Returns the smallest missing positive integer.

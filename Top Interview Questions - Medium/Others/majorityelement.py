@@ -5,5 +5,4 @@ class Solution:
         '''
         Returns the element that appears more than len(nums)/2 times.
         '''
-        nums.sort()
-        return nums[len(nums)//2]
+        return sorted(nums)[len(nums)//2]

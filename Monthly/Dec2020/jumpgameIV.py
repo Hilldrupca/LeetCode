@@ -34,32 +34,38 @@ class Solution:
         if not arr:
             return 0
         
+        # Populate all indices associated with each number
         indices = {}
-        for i in range(len(arr)):
-            if arr[i] not in indices:
-                indices[arr[i]] = []
-            indices[arr[i]].append(i)
+        for i, num in enumerate(arr):
+            if num not in indices:
+                indices[num] = []
+            indices[num].append(i)
         
+        # Perform breadth first search for last index
         queue = deque([(0,0)])
         visited = set([0])
-        
         while queue:
             idx, steps = queue.popleft()
             
             if idx == len(arr)-1:
                 return steps
             
+            # Visit other indices associated with arr[idx] if haven't already
             if arr[idx] in indices:
                 for n in indices[arr[idx]]:
                     if n not in visited:
                         queue.append((n, steps + 1))
                         visited.add(n)
+                        
+                # Delete to prevent repeat checks if arr[idx] repeats
                 del indices[arr[idx]]
             
+            # Visit index prior if haven't already
             if idx and idx-1 not in visited:
                 queue.append((idx-1, steps+1))
                 visited.add(idx-1)
                 
+            # Visit index after if haven't already
             if idx + 1 not in visited:
                 queue.append((idx+1, steps + 1))
                 visited.add(idx+1)

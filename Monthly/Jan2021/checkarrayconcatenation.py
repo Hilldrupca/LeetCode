@@ -2,7 +2,7 @@ from typing import List
 
 class Solution:
     '''
-    LeetCode Monthly Challenge problem for January 1st, 2020.
+    LeetCode Monthly Challenge problem for January 1st, 2021.
     '''
     def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
         '''

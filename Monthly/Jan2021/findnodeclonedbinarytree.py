@@ -7,7 +7,7 @@ class TreeNode:
         
 class Solution:
     '''
-    LeetCode Monthly Challenge problem for January 2nd, 2020.
+    LeetCode Monthly Challenge problem for January 2nd, 2021.
     '''
     def getTargetCopy(self, original: TreeNode, cloned: TreeNode,
                       target: TreeNode) -> TreeNode:

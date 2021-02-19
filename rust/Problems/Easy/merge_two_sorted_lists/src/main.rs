@@ -2,20 +2,34 @@
 // Provided by LeetCode
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
-  pub val: i32,
-  pub next: Option<Box<ListNode>>
+    pub val: i32,
+    pub next: Option<Box<ListNode>>
 }
 
 // Provided by LeetCode
 impl ListNode {
   
-  #[inline]
-  fn new(val: i32) -> Self {
-    ListNode {
-      next: None,
-      val
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode {
+        next: None,
+        val
+        }
     }
-  }
+
+    fn path(self) -> Vec<i32> {
+        // Returns the path values of the linked list.
+        // Added to help with testing.
+        let mut res: Vec<i32> = Vec::new();
+        let mut node = Some(Box::new(self));
+        
+        while let Some(temp) = node {
+            res.push(temp.val);
+            node = temp.next;
+        }
+        
+        res
+    }
 }
 
 struct Solution {}
@@ -58,24 +72,6 @@ impl Solution {
         
         sentinel.next
     }
-    
-    fn path(node: Option<Box<ListNode>>) -> Option<Vec<i32>> {
-        // Returns the path of a linked list.
-        // This works, but I'm not happy with it.
-        
-        let mut res: Vec<i32> = Vec::new();
-        let mut n = node;
-        
-        while n.is_some() {
-            res.push(n.as_mut()?.val);
-            n = n?.next;
-        }
-        
-        match res.len() {
-            0 => None,
-            _ => Some(res),
-        }
-    }
 }
 
 #[cfg(test)]
@@ -95,12 +91,11 @@ mod tests {
                     Some(Box::new(ListNode{val: 3, next:
                         Some(Box::new(ListNode::new(4)))}))}));
                       
-        let ans = Solution::merge_two_lists(l1, l2);
-                      
         assert_eq!(
-            Solution::path(ans).unwrap(),
+            match Solution::merge_two_lists(l1, l2) {
+                Some(node) => node.path(),
+                None => vec![],
+            },
             vec![1,1,2,3,4,4],
         );
-        
-    }
 }
